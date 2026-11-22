@@ -1,17 +1,21 @@
-import { Outlet } from 'react-router-dom'; 
-import Header from '../components/Header'; 
-import Footer from '../components/Footer'; 
 
+import { Outlet } from 'react-router-dom';
 
-const PageLayout = () => (
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+const PageLayout = () => {
+  return (
     <>
-     <div> 
-        <Header /> 
-        <main> 
-             <Outlet /> 
-        </main> 
-        <Footer /> 
-    </div> 
+      <Header />
+
+      <main>
+        <Outlet />
+      </main>
+
+      <Footer />
     </>
-); 
+  );
+};
+
 export default PageLayout;
