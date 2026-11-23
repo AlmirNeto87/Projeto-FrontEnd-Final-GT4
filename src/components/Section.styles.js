@@ -1,5 +1,6 @@
 
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const SectionContainer = styled.section`
   width: 100%;
@@ -22,7 +23,7 @@ export const SectionTitle = styled.h2`
   margin: 0;
 `;
 
-export const SectionLink = styled.a`
+export const SectionLink = styled(Link)`
   color: #C92071;
   font-size: 18px;
   text-decoration: none;

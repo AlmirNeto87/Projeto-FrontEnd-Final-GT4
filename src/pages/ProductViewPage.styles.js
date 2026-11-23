@@ -8,9 +8,11 @@ export const ProductViewContainer = styled.div`
   padding: 40px 20px 80px;
 `;
 
+
 export const ProductMainContent = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 40px;
 
   @media (max-width: 900px) {
@@ -18,9 +20,11 @@ export const ProductMainContent = styled.div`
   }
 `;
 
+
 export const ProductGalleryContainer = styled.div`
   flex: 1;
   min-width: 0;
   max-width: 700px;
   width: 100%;
 `;
+

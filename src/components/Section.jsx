@@ -1,4 +1,3 @@
-
 import {
   SectionContainer,
   SectionHeader,
@@ -19,7 +18,7 @@ const Section = ({
         <SectionTitle>{title}</SectionTitle>
 
         {link && (
-          <SectionLink href={link.href}>
+          <SectionLink to={link.href}>
             {link.text}
           </SectionLink>
         )}
