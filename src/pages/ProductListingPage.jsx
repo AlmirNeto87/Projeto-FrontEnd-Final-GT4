@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import Section from '../components/Section';
 import FilterGroup from '../components/FilterGroup';
@@ -15,6 +16,7 @@ import {
   FilterPanelTitle,
   FilterPanelContent,
   ProductsContainer,
+  EmptyMessage
 } from './ProductListingPage.styles';
 
 const products = [
@@ -99,41 +101,52 @@ const products = [
 ];
 
 const ProductListingPage = () => {
-  const [sortOrder, setSortOrder] = useState('');
+    const [sortOrder, setSortOrder] = useState('');
   
-
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedGender, setSelectedGender] = useState([]);
     const [selectedStatus, setSelectedStatus] = useState([]);
 
+    const [searchParams] = useSearchParams();
 
+    const searchFilter = searchParams
+    .get('filter')
+    ?.trim()
+    .toLocaleLowerCase('pt-BR') || '';
 
   
+    
     const filteredProducts = products.filter((product) => {
-        const matchesBrand =
-            selectedBrands.length === 0 ||
-            selectedBrands.includes(product.brand);
+    const matchesSearch =
+        !searchFilter ||
+        product.name.toLocaleLowerCase('pt-BR').includes(searchFilter);
 
-        const matchesCategory =
-            selectedCategories.length === 0 ||
-            selectedCategories.includes(product.category);
+    const matchesBrand =
+        selectedBrands.length === 0 ||
+        selectedBrands.includes(product.brand);
 
-        const matchesGender =
-            selectedGender.length === 0 ||
-            selectedGender.includes(product.gender);
+    const matchesCategory =
+        selectedCategories.length === 0 ||
+        selectedCategories.includes(product.category);
 
-        const matchesStatus =
-            selectedStatus.length === 0 ||
-            selectedStatus.includes(product.status);
+    const matchesGender =
+        selectedGender.length === 0 ||
+        selectedGender.includes(product.gender);
 
-        return (
-            matchesBrand &&
-            matchesCategory &&
-            matchesGender &&
-            matchesStatus
-        );  
+    const matchesStatus =
+        selectedStatus.length === 0 ||
+        selectedStatus.includes(product.status);
+
+    return (
+        matchesSearch &&
+        matchesBrand &&
+        matchesCategory &&
+        matchesGender &&
+        matchesStatus
+    );
     });
+
 
 const sortedProducts = [...filteredProducts].sort((a, b) => {
   const priceA = a.priceDiscount ?? a.price;
@@ -222,15 +235,33 @@ const sortedProducts = [...filteredProducts].sort((a, b) => {
       </FilterSidebar>
 
       <ProductsContainer>
+       
+        
         <Section
-          title={`${sortedProducts.length} produtos`}
-          titleAlign="left"
+        title={
+            searchFilter
+            ? `${sortedProducts.length} ${searchParams.get('filter').trim()}`
+            : `${sortedProducts.length} produtos`
+        }
+        titleAlign="left"
         >
+
+        {sortedProducts.length > 0 ? (
             <ProductListing
-                products={sortedProducts}
-                className="products-grid"
+            products={sortedProducts}
+            className="products-grid"
             />
+        ) : (
+            <EmptyMessage>
+            Nenhum produto encontrado.
+            <span>
+                Tente pesquisar por outro termo ou alterar os filtros.
+            </span>
+            </EmptyMessage>
+        )}
+
         </Section>
+
       </ProductsContainer>
     </ProductPageContainer>
   );

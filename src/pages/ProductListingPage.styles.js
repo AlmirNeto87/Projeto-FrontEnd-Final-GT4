@@ -106,3 +106,24 @@ export const ProductsContainer = styled.div`
     }
   }
 `;
+
+export const EmptyMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 250px;
+  padding: 32px;
+  text-align: center;
+  color: #474747;
+  font-size: 18px;
+  font-weight: 700;
+
+  span {
+    color: #8F8F8F;
+    font-size: 14px;
+    font-weight: 400;
+  }
+`;
