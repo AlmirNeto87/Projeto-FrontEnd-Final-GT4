@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import NotFound from '../pages/NotFound';
+import NotFoundPage from '../pages/NotFoundPage';
 import PageLayout from '../layouts/PageLayout';
 import HomePage from '../pages/HomePage';
 import ProductListingPage from '../pages/ProductListingPage'
@@ -14,7 +14,7 @@ const DripStoreRoutes = () => (
         <Route path="product/:id" element={<ProductViewPage />} />
 
 
-        {/* <Route path="*" element={<NotFound />} /> Rota para páginas não encontradas */}
+        <Route path="*" element={<NotFoundPage />} /> Rota para páginas não encontradas
       </Route>
     </Routes>
   </BrowserRouter>
