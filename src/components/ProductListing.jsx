@@ -6,9 +6,9 @@ import {
   ProductListingItem,
 } from './ProductListing.styles';
 
-const ProductListing = ({ products = [] }) => {
+const ProductListing = ({ products = [], className }) => {
   return (
-    <ProductListingContainer>
+    <ProductListingContainer className={className}>
       {products.map((product, index) => (
         <ProductListingItem key={`${product.name}-${index}`}>
           <ProductCard
