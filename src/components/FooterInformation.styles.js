@@ -1,5 +1,6 @@
 
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const InformationContainer = styled.div`
   display: flex;
@@ -18,20 +19,18 @@ export const InformationList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
 `;
 
-export const InformationItem = styled.li`
-  a {
-    color: #FFFFFF;
-    font-size: 14px;
-    text-decoration: none;
-    transition: color 0.2s ease;
+export const InformationLink = styled(Link)`
+  color: #FFFFFF;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.2s ease;
 
-    &:hover {
-      color: #B5B6F2;
-    }
+  &:hover {
+    color: #C92071;
   }
 `;

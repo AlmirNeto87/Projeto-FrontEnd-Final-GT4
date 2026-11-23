@@ -1,14 +1,13 @@
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from './Logo';
 import miniCart from '../assets/icons/mini-cart.svg';
 
 
 import {
   HeaderContainer,
   HeaderTop,
-  Logo,
   SearchForm,
   SearchInput,
   SearchButton,
@@ -39,9 +38,11 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderTop>
-        <Logo to="/" aria-label="Drip Store - Página inicial">
-          Drip Store
-        </Logo>
+        
+        <Link to="/" aria-label="Digital Store - Página inicial">
+            <Logo />
+        </Link>
+
 
         <SearchForm onSubmit={handleSearch}>
           <SearchInput

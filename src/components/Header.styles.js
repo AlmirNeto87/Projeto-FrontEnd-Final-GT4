@@ -26,14 +26,6 @@ export const HeaderTop = styled.div`
   }
 `;
 
-export const Logo = styled(Link)`
-  flex-shrink: 0;
-  color: #C92071;
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  text-decoration: none;
-`;
 
 export const SearchForm = styled.form`
   display: flex;

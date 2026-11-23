@@ -1,11 +1,8 @@
-
-import { Link } from 'react-router-dom';
-
 import {
   InformationContainer,
   InformationTitle,
   InformationList,
-  InformationItem,
+  InformationLink,
 } from './FooterInformation.styles';
 
 const FooterInformation = ({ title, informations = [] }) => {
@@ -15,11 +12,11 @@ const FooterInformation = ({ title, informations = [] }) => {
 
       <InformationList>
         {informations.map((information, index) => (
-          <InformationItem key={`${information.text}-${index}`}>
-            <Link to={information.link}>
+          <li key={`${information.text}-${index}`}>
+            <InformationLink to={information.link}>
               {information.text}
-            </Link>
-          </InformationItem>
+            </InformationLink>
+          </li>
         ))}
       </InformationList>
     </InformationContainer>
